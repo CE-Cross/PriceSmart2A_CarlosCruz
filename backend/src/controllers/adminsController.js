@@ -1,14 +1,14 @@
 //array de funciones
-const brandController = {};
+const adminController = {};
 
 //importo la colección que voy a ocupar
-import brandsModel from "../models/branches.js";
+import adminsModel from "../models/admins.js";
 
 //SELECT
-brandController.getBrand = async (req, res) => {
+adminController.getAdmin = async (req, res) => {
   try {
-    const brands = await brandsModel.find();
-    return res.status(200).json(brands);
+    const admins = await adminsModel.find();
+    return res.status(200).json(admins);
   } catch (error) {
     console.log("Error" + error);
     return res.status(500).json({ message: "Internal server error" });
@@ -16,27 +16,27 @@ brandController.getBrand = async (req, res) => {
 };
 
 //INSERTAR
-brandController.insertBrands = async (req, res) => {
+adminController.insertAdmins = async (req, res) => {
   try {
     //#1 - solicito los datos a guardar
-    let { name, slogan, address, isActive } = req.body;
+    let { name, email, password, isVerified } = req.body;
 
     //#2 - Validaciones
     //Sanitizar
     name = name?.trim();
-    slogan = slogan?.trim();
-    address = address?.trim();
+    email = email?.trim();
+    password = password?.trim();
 
     //validaciones de datos null o require
-    if (!name || !slogan || !address) {
+    if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are requred" });
     }
 
-    if (name.length < 3) {
+    if (name.length < 3){
       return res.status(400).json({ message: "name too short" });
     }
 
-    if (address.length > 100) {
+    if (email.length > 100) {
       return (res.status(400), json({ message: "address too long" }));
     }
 
