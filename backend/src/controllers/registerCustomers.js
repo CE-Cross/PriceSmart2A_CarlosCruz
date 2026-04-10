@@ -28,11 +28,11 @@ registerCustomersController.register = async (req, res) => {
         //verificar si el correo ya existe
         const existCustomer = await customerModel.findOne({email});
         if(existCustomer){
-            return res.status(400).json({message: "email already in use"})
+            return res.status(400).json({message: "email already in use"});
         }
 
         //Encriptar la contraseña
-        const passwordHash = await bcryptjs.hash(password, 10)
+        const passwordHash = await bcryptjs.hash(password, 10);
 
         //Guardamos todos en la base de datos
         const newCustomer = new customerModel({
