@@ -78,7 +78,7 @@ registerCustomersController.register = async (req, res) => {
             from: config.email.user_email,
             to: email,
             subject: "Verificación de cuenta",
-            text: "Para verificar tu cuenta, utiliza este código" + verificationCode + " expira en 15 munutos"
+            text: "Para verificar tu cuenta, utiliza este código " + verificationCode + " expira en 15 munutos"
         }
 
         //#3 - Enviar el correo electrónico
