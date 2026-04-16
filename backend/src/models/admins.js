@@ -16,4 +16,6 @@ const adminsSchema = new Schema({
 }, {
     timestamps: true,
     strict: false
-})
+});
+
+export default model("adminsModel", adminsSchema);

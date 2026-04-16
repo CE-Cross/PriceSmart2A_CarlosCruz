@@ -5,12 +5,12 @@ import adminsController from "../controllers/adminsController.js";
 const router = express.Router();
 
 
-router.route("/")
-.get(adminsController.getAdmin)
-.post(adminsController.insertAdmin)
+// router.route("/")
+// .get(adminsController.getAdmin)
+// .post(adminsController.insertAdmin)
 
-router.route("/:id")
-.put(adminsController.updateAdmin)
-.delete(adminsController.deleteAdmin)
+// router.route("/:id")
+// .put(adminsController.updateAdmin)
+// .delete(adminsController.deleteAdmin)
 
-export default router;
+// export default router;

@@ -1,5 +1,5 @@
 import { act } from "react";
-import customerModel from "../models/customers";
+import customerModel from "../models/customers.js";
 
 //creamos un array de funciones
 const customerController = {};

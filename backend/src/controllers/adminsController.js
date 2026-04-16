@@ -51,7 +51,7 @@ adminController.insertAdmins = async (req, res) => {
 };
 
 //ELIMINAR
-brandController.deleteBrand = async (req, res) => {
+adminController.deleteBrand = async (req, res) => {
   try {
     const deleteBrand = await brandsModel.findByIdAndDelete(req.params.id);
 
@@ -68,7 +68,7 @@ brandController.deleteBrand = async (req, res) => {
 };
 
 //ACTUALIZAR
-brandController.updateBrand = async (req, res) => {
+adminController.updateBrand = async (req, res) => {
   try {
     //Pedimos los nuevos datos
     let { name, slogan, address, isActive } = req.body;
@@ -115,4 +115,4 @@ brandController.updateBrand = async (req, res) => {
   }
 };
 
-export default brandController;
+export default adminController;
