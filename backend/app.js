@@ -6,6 +6,7 @@ import brandsRoutes from "./src/routes/brand.js";
 import adminsRoutes from "./src/routes/admins.js";
 import customersRoutes from "./src/routes/customers.js";
 import registerCustomersRoutes from "./src/routes/registerCustomers.js";
+import loginCustomerRoutes from "./src/routes/loginCustomers.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -22,5 +23,6 @@ app.use("/api/brands", brandsRoutes);
 app.use("/api/admins", adminsRoutes);
 app.use("/api/customers", customersRoutes);
 app.use("/api/registerCustomers", registerCustomersRoutes);
+app.use("/api/loginCustomers", loginCustomerRoutes);
 
 export default app;
