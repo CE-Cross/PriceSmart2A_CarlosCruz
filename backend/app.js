@@ -9,8 +9,16 @@ import registerCustomersRoutes from "./src/routes/registerCustomers.js";
 import loginCustomerRoutes from "./src/routes/loginCustomers.js";
 import logoutRoutes from "./src/routes/logout.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
 
 const app = express();
+
+app.use(cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    //Permitir el envio de cookies y credenciales
+    credentials: true
+}));
 
 app.use(cookieParser())
 
@@ -26,5 +34,7 @@ app.use("/api/customers", customersRoutes);
 app.use("/api/registerCustomers", registerCustomersRoutes);
 app.use("/api/loginCustomers", loginCustomerRoutes);
 app.use("/api/logout", logoutRoutes);
+app.use("/api/recoveryPassword", recoveryPasswordRoutes);
+
 
 export default app;
