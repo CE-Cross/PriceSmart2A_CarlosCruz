@@ -20,8 +20,11 @@ customerController.deleteCustomer = async (req, res) => {
     try {
         const deletedCustomer = await customerModel.findByIdAndDelete(req.params.id);
         if (!deletedCustomer) {
-            return res.status(404).json({ message: "Customer deleted" });
-        }
+            return res.status(404).json({ message: "Customer not found" });
+        };
+
+        res.status(200).json({message: "Customer deleted"});
+        
     } catch (error) {
         console.log("error " + error);
         return res.status(500).json({ message: "Internal server error" });

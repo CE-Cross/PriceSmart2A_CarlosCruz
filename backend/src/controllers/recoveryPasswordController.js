@@ -1,12 +1,12 @@
 import nodemailer from "nodemailer"; //enviar correo
 import crypto from "crypto"//
 import jsonwebtoken from "jsonwebtoken"
-import bcrypts from "bcryptjs"
+import bcrypt from "bcryptjs"
 import sendEmail from "../utils/sendEmailRecovery.js"
 
 import { config } from "../config.js";
 
-import clients from "../models/clients.js";
+import clients from "../models/customers.js";
 
 const recoveryPasswordController = {}
 
@@ -29,7 +29,7 @@ recoveryPasswordController.requestCode = async (req, res) => {
             {email, randomCode, userType: "client", verified: false},
 
             //Llave secreta
-            config.jwt.secret,
+            config.JWT.secret,
 
             //Cuando expira
             {expiresIn: "15m"}
@@ -81,7 +81,7 @@ recoveryPasswordController.verifyCode = async (req, res) => {
         const token = req.cookies.recoveryCookie
 
         //3- extraer token
-        const decoded = jsonwebtoken.verify(token, config.jwt.secret);
+        const decoded = jsonwebtoken.verify(token, config.JWT.secret);
 
         //4- comparar
         if(code !== decoded.randomCode){
@@ -90,7 +90,7 @@ recoveryPasswordController.verifyCode = async (req, res) => {
 
         const newToken = jsonwebtoken.sign(
             {email: decoded.email, userType: "client", verified: true},
-            config.jwt.secret,
+            config.JWT.secret,
             {expiresIn: "15m"}
         )
 
@@ -107,7 +107,7 @@ recoveryPasswordController.newPassword = async(req, res) => {
     try {
         //1. Solicito los datos
         const { newPassword, comfirmedPassword } = req.body;
-
+        
         //Comparar
         if(newPassword !== comfirmedPassword){
             return res.status(400).json({message: "Passwords doesn't match"})
@@ -115,7 +115,7 @@ recoveryPasswordController.newPassword = async(req, res) => {
 
         //vamos a comprobar que el token ya esta verificado
         const token = req.cookies.recoveryCookie;
-        const decoded = jsonwebtoken.verify(token, config.jwt.secret)
+        const decoded = jsonwebtoken.verify(token, config.JWT.secret)
 
         if(!decoded.verified){
             return res.status(400).json({message: "code not verified"})

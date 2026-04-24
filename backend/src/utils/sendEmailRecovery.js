@@ -1,5 +1,5 @@
 const HTMLRecoveryEmail = (code, email) => {
-    return(
+    return (
         `<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -7,17 +7,26 @@ const HTMLRecoveryEmail = (code, email) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #66a181; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 600px; margin: 0 auto; background-color: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                <h1 style="color: #333; text-align: center;">¿Olvidaste tu contraseña?</h1>
-                <p style="color: #666; line-height: 1.6;">Hola <strong>${email}</strong>,</p>
-                <p style="color: #666; line-height: 1.6;">A continuación se te presenta el codigo de verificación. Favor de digitarlo para continuar con el proceso de cambio de contraseña</p>
-                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; display: flex; flex-direction: row; align-items: center; justify-content: center; flex-direction: column;">
-                    <p style="margin: 0; color: #333; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; font-size: 40px;">${code}</p>
-                </div>
-                <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
-                <p style="color: #999; font-size: 12px; text-align: center;">Este es un correo automático, por favor no responder.</p>
-            </div>
+            <div style="font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; border: 1px solid #ddd; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #2c3e50; font-size: 24px; margin-bottom: 20px;">Password Recovery</h1>
+        <p style="font-size: 16px; color: #555; line-height: 1.5;">
+          Hello, we received a request to reset your password. Use the verification code below to proceed:
+        </p>
+        <div style="display: inline-block; padding: 10px 20px; margin: 20px 0; font-size: 18px; font-weight: bold; color: #fff; background-color: #ff7f50; border-radius: 5px; border: 1px solid #e67e22;">
+          ${code}
+        </div>
+        <p style="font-size: 14px; color: #777; line-height: 1.5;">
+          This code is valid for the next <strong>15 minutes</strong>. If you didn’t request this email, you can safely ignore it.
+        </p>
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+        <footer style="font-size: 12px; color: #aaa;">
+          If you need further assistance, please contact our support team at
+          <a href="mailto:support@example.com" style="color: #3498db; text-decoration: none;">support@example.com</a>.
+        </footer>
+      </div>
         </body>
         </html>`
     )
 }
+
+export default HTMLRecoveryEmail;
