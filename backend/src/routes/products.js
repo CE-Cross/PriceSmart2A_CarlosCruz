@@ -9,7 +9,13 @@ router.route("/")
 .get(productController.getProducts)
 .post(productController.insertProducts);
 
+router.route("/searchByName").post(productController.searchByName);
+router.route("/lowStock").get(productController.getLowStock);
+router.route("/priceRange").post(productController.getProductsByPriceRange);
+router.route("/count").get(productController.countProducts);
+
 router.route("/:id")
+.get(productController.getProductById)
 .put(productController.updateProducts)
 .delete(productController.deleteProducts);
 

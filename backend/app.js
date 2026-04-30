@@ -11,8 +11,11 @@ import logoutRoutes from "./src/routes/logout.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
+import limiter from "./src/middlewares/ratelimiter.js";
 
 const app = express();
+
+app.use(limiter);
 
 app.use(cors({
     origin: ["http://localhost:5173", "http://localhost:5174"],
