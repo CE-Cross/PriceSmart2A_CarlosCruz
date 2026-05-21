@@ -3,7 +3,7 @@ import providerModel from "../models/providers.js";
 import { v2 as cloudinary } from "cloudinary";
 
 //Array de funciones
-providersController = {};
+const providersController = {};
 
 //SELECT
 providersController.getAllProviders = async (req, res) => {
