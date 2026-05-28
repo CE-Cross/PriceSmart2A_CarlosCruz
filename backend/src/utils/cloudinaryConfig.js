@@ -1,7 +1,9 @@
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
+import multerStorageCloudinary from "multer-storage-cloudinary";
 import { config } from "../config.js";
+
+const {CloudinaryStorage} = multerStorageCloudinary
 
 //#1 - Configuramos cloudinary con nuestras credenciales.
 cloudinary.config({
@@ -21,5 +23,6 @@ const storage = new CloudinaryStorage({
 
 //#3 - Configurar multer
 const upload = multer({ storage });
+console.log(multerStorageCloudinary);
 
 export default upload;

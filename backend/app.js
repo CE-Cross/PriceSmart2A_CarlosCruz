@@ -12,6 +12,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
 import providersRoutes from "./src/routes/providers.js";
+import cartRoutes from "./src/routes/cart.js";
 import limiter from "./src/middlewares/ratelimiter.js";
 
 const app = express();
@@ -40,5 +41,6 @@ app.use("/api/loginCustomers", loginCustomerRoutes);
 app.use("/api/logout", logoutRoutes);
 app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 app.use("/api/providers", providersRoutes);
+app.use("/api/carts", cartRoutes);
 
 export default app;

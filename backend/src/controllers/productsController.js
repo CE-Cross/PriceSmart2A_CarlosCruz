@@ -7,8 +7,13 @@ import productsModel from "../models/products.js";
 
 //SELECT
 productController.getProducts = async (req, res) => {
-  const products = await productsModel.find();
+  try{
+    const products = await productsModel.find();
   res.json(products);
+  } catch(error){
+    console.log("error " + error);
+    return res.status(500).json({message: "Internal server error"});
+  }
 };
 
 //Select por ID
