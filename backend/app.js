@@ -13,6 +13,7 @@ import cors from "cors";
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
 import providersRoutes from "./src/routes/providers.js";
 import cartRoutes from "./src/routes/cart.js";
+import wompiRoutes from "./src/routes/wompi.js";
 import limiter from "./src/middlewares/ratelimiter.js";
 
 const app = express();
@@ -42,5 +43,6 @@ app.use("/api/logout", logoutRoutes);
 app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 app.use("/api/providers", providersRoutes);
 app.use("/api/carts", cartRoutes);
+app.use("/api/wompi", wompiRoutes);
 
 export default app;
