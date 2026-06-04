@@ -14,6 +14,7 @@ import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
 import providersRoutes from "./src/routes/providers.js";
 import cartRoutes from "./src/routes/cart.js";
 import wompiRoutes from "./src/routes/wompi.js";
+import deliveryDriversRoutes from "./src/routes/deliveryDrivers.js"
 import limiter from "./src/middlewares/ratelimiter.js";
 
 const app = express();
@@ -44,5 +45,6 @@ app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 app.use("/api/providers", providersRoutes);
 app.use("/api/carts", cartRoutes);
 app.use("/api/wompi", wompiRoutes);
+app.use("/api/deliveryDrivers", deliveryDriversRoutes);
 
 export default app;
