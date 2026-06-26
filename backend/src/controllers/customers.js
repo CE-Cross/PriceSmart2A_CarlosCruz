@@ -51,7 +51,7 @@ customerController.updateCustomer = async (req, res) => {
         email = email?.trim();
 
         //validar el tamaño del nombre
-        if (name.lenght < 3 || name.lenght > 15) {
+        if (name.length < 3 || name.length > 15) {
             return res.status(400).json({ message: "Invalid name" });
         }
 
