@@ -12,7 +12,7 @@ const recoveryPasswordController = {}
 
 recoveryPasswordController.requestCode = async (req, res) => {
     try {
-        const { email } = req.body;
+        const { email } = req.body  ;
 
         //Validamos que el correo existe
         const userFound = await clients.findOne({email});
@@ -62,10 +62,9 @@ recoveryPasswordController.requestCode = async (req, res) => {
                 console.log(error)
                 return res.status(500).json({message: "error al enviar el correo"})
             }
+
+            return res.status(200).json({message: "email sent"});
         });
-
-        return res.status(200).json({message: "email sent"})
-
     } catch (error) {
         console.log("Error: " + error);
         return res.status(500).json({message: "Internal server error"});
