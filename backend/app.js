@@ -19,6 +19,7 @@ import wompiRoutes from "./src/routes/wompi.js";
 import deliveryDriversRoutes from "./src/routes/deliveryDrivers.js"
 import limiter from "./src/middlewares/ratelimiter.js";
 import { validateAuthCookie } from "./src/middlewares/authMiddleware.js";
+import evenRoutes from "./src/routes/event.js";
 
 const app = express();
 
@@ -51,5 +52,6 @@ app.use("/api/providers", providersRoutes);
 app.use("/api/carts", validateAuthCookie(["admin", "customer"]), cartRoutes);
 app.use("/api/wompi", wompiRoutes);
 app.use("/api/deliveryDrivers", deliveryDriversRoutes);
+app.use("/api/events", evenRoutes);
 
 export default app;
