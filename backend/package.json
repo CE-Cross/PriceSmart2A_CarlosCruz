@@ -29,6 +29,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^9.0.1",
-    "react": "^19.2.7"
+    "react": "^19.2.7",
+    "swagger-ui-express": "^5.0.1"
   }
 }

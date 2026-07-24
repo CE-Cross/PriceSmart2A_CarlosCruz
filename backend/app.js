@@ -19,7 +19,10 @@ import wompiRoutes from "./src/routes/wompi.js";
 import deliveryDriversRoutes from "./src/routes/deliveryDrivers.js"
 import limiter from "./src/middlewares/ratelimiter.js";
 import { validateAuthCookie } from "./src/middlewares/authMiddleware.js";
-import evenRoutes from "./src/routes/event.js";
+import eventRoutes from "./src/routes/event.js";
+
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./src/utils/ricaldone-645-HOPE_API-1-resolved.json" with {type: "json"};
 
 const app = express();
 
@@ -52,6 +55,7 @@ app.use("/api/providers", providersRoutes);
 app.use("/api/carts", validateAuthCookie(["admin", "customer"]), cartRoutes);
 app.use("/api/wompi", wompiRoutes);
 app.use("/api/deliveryDrivers", deliveryDriversRoutes);
-app.use("/api/events", evenRoutes);
+app.use("/api/events", eventRoutes);
+app.use("/api/documentation", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 export default app;
